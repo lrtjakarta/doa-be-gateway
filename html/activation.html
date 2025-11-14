@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="sedap://activation">Link Aktivasi</a><br/>
+    <a href="sedap://registration">Screen Registration</a><br/>
+    <a href="sedap://login">Screen Login</a><br/>
+    <a href="sedap://createpassword/danipomalaa">Create Password 1</a><br/>
+    <a href="https://link.sedap.app/createpassword/danipomalaa">Create Password 2</a><br/>
+    <center style="border:1px solid #CFCFCF">
+    <h1>
+        Hi, ${req.body.name}! </h1>
+    <p>Silahkan aktivasi akun anda dengan mengklik tautan dibawah berikut 
+    </p>
+    <div><button href="sedap://activation/${req.body.userId}" 
+        style="text-align:center;
+        background-color:#F06282;color:#E3E3E3;padding: 10px;border:1px solid #83253b; border-radius: 10px; ">Klik disini untuk aktivasi akun mu</button></div>
+    <p>Tautan ini hanya dapat digunakan sekali untuk akun Anda<p>
+    <br/>
+    <p>Hormat Kami,</p>
+    <p>Tim SEDAP</p>
+    <p>Generasi Sehat, Indonesia Hebat</p>
+    </center>
+</body>
+</html>
