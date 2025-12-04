@@ -1,7 +1,12 @@
-FROM node:12
-WORKDIR /usr/src/app
+FROM node:18
+WORKDIR /app
+
 COPY package*.json ./
-RUN npm install
+RUN npm ci
+
 COPY . .
-EXPOSE 1000
-CMD [ "node", "server.js" ]
+
+ENV NODE_ENV=production
+
+EXPOSE 2020
+CMD ["npm", "start"]
