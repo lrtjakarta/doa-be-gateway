@@ -1,0 +1,253 @@
+version: "3.9"
+
+services:
+  # -----------------------------
+  # BACKEND SERVICES (UNCHANGED)
+  # -----------------------------
+
+  asp-operational-service:
+    build: ./backend/asp-operational-service
+    container_name: asp-operational-service
+    environment:
+      - PORT=2026
+      - NODE_ENV=production
+    ports:
+      - "2026:2026"
+    networks:
+      - app-network
+
+  assesment-service:
+    build: ./backend/assesment-service
+    container_name: assesment-service
+    environment:
+      - PORT=2025
+      - NODE_ENV=production
+    ports:
+      - "2025:2025"
+    networks:
+      - app-network
+
+  medical-checkup-service:
+    build: ./backend/medical-checkup-service
+    container_name: medical-checkup-service
+    environment:
+      - PORT=2024
+      - NODE_ENV=production
+    ports:
+      - "2024:2024"
+    networks:
+      - app-network
+
+  goods-service:
+    build: ./backend/goods-service
+    container_name: goods-service
+    environment:
+      - PORT=2050
+      - NODE_ENV=production
+    ports:
+      - "2050:2050"
+    networks:
+      - app-network
+
+  pelayanan-operasional-service:
+    build: ./backend/pelayanan-operasional-service
+    container_name: pelayanan-operasional-service
+    environment:
+      - PORT=2075
+      - NODE_ENV=production
+    ports:
+      - "2075:2075"
+    networks:
+      - app-network
+
+  upload-service:
+    build: ./backend/upload-service
+    container_name: upload-service
+    environment:
+      - PORT=2080
+      - NODE_ENV=production
+    ports:
+      - "2080:2080"
+    networks:
+      - app-network
+
+  user-service:
+    build: ./backend/user-service
+    container_name: user-service
+    environment:
+      - PORT=2021
+      - NODE_ENV=production
+    ports:
+      - "2021:2021"
+    networks:
+      - app-network
+
+  workorder-service:
+    build: ./backend/workorder-service
+    container_name: workorder-service
+    environment:
+      - PORT=2022
+      - NODE_ENV=production
+    ports:
+      - "2022:2022"
+    networks:
+      - app-network
+
+  gateway:
+    build: ./backend/gateway
+    container_name: gateway
+    environment:
+      - PORT=2020
+      - NODE_ENV=production
+    ports:
+      - "2020:2020"
+    networks:
+      - app-network
+
+
+  # -----------------------------
+  # FRONTEND DEV SERVER (FIXED)
+  # -----------------------------
+
+  asp-operational-web-app:
+    build: ./frontend/asp-operational-web-app
+    container_name: asp-operational-web-app
+    environment:
+      - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3008:3000"
+    volumes:
+      - ./frontend/asp-operational-web-app:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  assesment-2-app:
+    build: ./frontend/assesment-2-app
+    container_name: assesment-2-app
+    environment:
+      - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3007:3000"
+    volumes:
+      - ./frontend/assesment-2-app:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  assesment-app:
+    build: ./frontend/assesment-app
+    container_name: assesment-app
+    environment:
+      - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3006:3000"
+    volumes:
+      - ./frontend/assesment-app:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  information-web-app:
+    build: ./frontend/information-web-app
+    container_name: information-web-app
+    environment:
+      - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3011:3000"
+    volumes:
+      - ./frontend/information-web-app:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  item-modul-web-app:
+    build: ./frontend/item-modul-web-app
+    container_name: item-modul-web-app
+    environment:
+      - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./frontend/item-modul-web-app:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  kedinasan-web-app:
+    build: ./frontend/kedinasan-web-app
+    container_name: kedinasan-web-app
+    environment:
+      - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./frontend/kedinasan-web-app:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  medical-web-app:
+    build: ./frontend/medical-web-app
+    container_name: medical-web-app
+    environment:
+      - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3005:3000"
+    volumes:
+      - ./frontend/medical-web-app:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  pelayanan-operasional-web-app:
+    build: ./frontend/pelayanan-operasional-web-app
+    container_name: pelayanan-operasional-web-app
+    environment:
+      - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3003:3000"
+    volumes:
+      - ./frontend/pelayanan-operasional-web-app:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  workorder-mobile-app:
+    build: ./frontend/workorder-mobile-app
+    container_name: workorder-mobile-app
+    environment:
+      - WDS_SOCKET_PORT=0
+      - WDS_SOCKET_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3004:3000"
+    volumes:
+      - ./frontend/workorder-mobile-app:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+
+# -----------------------------
+# NETWORK
+# -----------------------------
+networks:
+  app-network:
+    name: app-network
